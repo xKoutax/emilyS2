@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Emily Ullón ❤️</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(to right, #f7a1c1, #ff7eb3);
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+        }
+        .story {
+            font-size: 1.4em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .button {
+            display: inline-block;
+            background: #ff4e8b;
+            color: white;
+            padding: 15px 30px;
+            margin: 20px 10px;
+            border-radius: 30px;
+            font-size: 1.3em;
+            transition: 0.3s;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+        }
+        .button:hover {
+            background: #ff2e61;
+            transform: scale(1.1);
+        }
+        iframe, video, img {
+            width: 100%;
+            max-width: 400px;
+            margin: 20px 0;
+            display: none;
+            border-radius: 15px;
+        }
+        .heart {
+            font-size: 2.5em;
+            color: red;
+            animation: heartbeat 1s infinite;
+        }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        .romantic-message {
+            font-size: 1.4em;
+            line-height: 1.6;
+            color: #fff;
+            font-style: italic;
+        }
+    </style>
+    <script>
+        let step = 0;
+        const storySteps = [
+            { text: "No sé cómo, pero desde el primer momento que hablamos, sentí una conexión única ❤️", video: false },
+            { text: "Nuestras conversaciones se hicieron más cercanas y un día ya no pude aguantarlo más... Te lo dije: te amo. ❤️", video: false },
+            { text: "Me enamoré de tu forma de tratar a aquellos niños... ❤️", video: "https://github.com/xKoutax/portfolio/blob/master/assets/images/emi.mp4?raw=true" },
+            { text: "Me enamoré de cada ocurrencia tuya, de tus sueños, de todo lo que compartías conmigo... ❤️", img: "https://github.com/xKoutax/portfolio/blob/master/assets/images/Imagen%20de%20WhatsApp%202025-02-25%20a%20las%2014.53.53_be11b708.jpg?raw=true" },
+            { text: "Me enamoré cuando dijiste que te importaba tanto que eso te hacía sentir mal... ❤️", img: "https://github.com/xKoutax/portfolio/blob/master/assets/images/Imagen%20de%20WhatsApp%202025-02-25%20a%20las%2014.51.43_970da29e.jpg?raw=true" },
+            { text: "Me enamoré de tu voz al cantarme... ❤️", video: "https://github.com/xKoutax/portfolio/blob/master/assets/images/Video%20de%20WhatsApp%202025-02-25%20a%20las%2014.55.12_46771806.mp4?raw=true" },
+            { text: "Simplemente me enamoré de todo lo que no era tangible, y cada día mi amor creció más... ❤️", video: false },
+            { text: "Eres una chica de hermosos sentimientos y tienes una carita muy linda. ❤️", img: "https://github.com/xKoutax/portfolio/blob/master/assets/images/Imagen%20de%20WhatsApp%202025-02-25%20a%20las%2014.51.11_bd3e2fa4.jpg?raw=true" },
+            { text: "El miedo y mi inmadurez me hizo perderte y ahora pago el dolor a diario. 💔", video: false },
+            { text: "Pero en cada cosa que haga, cada palabra, cada pensamiento, lo haré llevándote a ti conmigo. ❤️", video: false },
+            { text: "Gracias por abrirme los ojos y mostrarme un mundo donde estaba equivocado. ❤️", video: false },
+            { text: "Gracias por pasar por mi vida, te extraño mucho pero a la vez tengo que aprender a valorar cada instante con quien se ama. ❤️", video: false },
+            { text: "Gracias por todo, Emily Yamilth Ullón Bravo. Una parte de mí siempre te esperará. ❤️", video: false },
+            { text: "Estoy tan feliz de haberte conocido, y lamento no haberte valorado como te merecías. Mi corazón está lleno de arrepentimiento, pero también de un amor infinito por ti. Perdóname por mis errores. ❤️", video: false },
+            { text: "Cada momento que paso recordándote me llena de una dulzura infinita, y mi alma te sigue buscando. Gracias por ser mi mejor historia. ❤️", video: "https://www.tiktok.com/@renovacion.mental/video/7471416075217898774?_r=1&_t=ZM-8uDhK4zpzrr" },
+            { text: "Y aunque el tiempo haya pasado, mi amor por ti sigue siendo tan fuerte como al principio. Te llevo en mi corazón, y nunca dejaré de pensar en ti. ❤️", video: "https://www.tiktok.com/@janeeeeeeeth5/video/7461435971263827206?_r=1&_t=ZM-8uDhHy1wFPx" },
+            { text: "Si alguna vez te sentiste sola, quiero que sepas que siempre estuve ahí en pensamiento, esperando poder demostrarte lo que realmente eres para mí. ❤️", video: "https://www.tiktok.com/@janeeeeeeeth5/video/7461435971263827206?_r=1&_t=ZM-8uDhHy1wFPx" }
+        ];
+
+        function nextStep() {
+            if (step < storySteps.length - 1) {
+                step++;
+                document.getElementById("story").innerText = storySteps[step].text;
+                let video = document.getElementById("video");
+                let img = document.getElementById("img");
+                
+                if (storySteps[step].video) {
+                    video.src = storySteps[step].video;
+                    video.style.display = "block";
+                } else {
+                    video.style.display = "none";
+                }
+                
+                if (storySteps[step].img) {
+                    img.src = storySteps[step].img;
+                    img.style.display = "block";
+                } else {
+                    img.style.display = "none";
+                }
+            } else {
+                document.getElementById("buttons").innerHTML = "<p class='heart'>Gracias por ser tú, Emily. ❤️</p>";
+            }
+        }
+    </script>
+</head>
+<body>
+    <!-- Música de fondo -->
+    <div style="display:none;">
+        <iframe width="0" height="0" src="https://www.youtube.com/embed/h9RXYplejZo?autoplay=1&loop=1&playlist=h9RXYplejZo" frameborder="0" allow="autoplay; encrypted-media"></iframe>
+    </div>
+    
+    <h1>Para Emily Ullón ❤️</h1>
+    <div class="container">
+        <p id="story" class="story">No sé cómo, pero desde el primer momento que hablamos, sentí una conexión única ❤️</p>
+        <video id="video" controls style="display:none;">
+            <source src="" type="video/mp4">
+            Tu navegador no soporta videos.
+        </video>
+        <img id="img" src="" style="display:none;" />
+        <div id="buttons">
+            <button class="button" onclick="nextStep()">Siguiente ❤️</button>
+        </div>
+    </div>
+</body>
+</html>
